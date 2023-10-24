@@ -66,25 +66,81 @@ const Usuarios = () => {
       <Text style={styles.titulo}>Mi Perfil</Text>
       <UserAvatar size={110} name={userData.usuarioLogueado} src={userData.ico} style={styles.avatar} />
       <View style={styles.tabla}>
-        <View style={styles.fila}>
-          <Text style={styles.celda1}>No Control:</Text>
-          <Text style={styles.celda2}>{userData.ncontrol}</Text>
-        </View>
-        <View style={styles.fila}>
-          <Text style={styles.celda1}>Nombre:</Text>
-          <Text style={styles.celda2}>{userData.usuarioLogueado}</Text>
-        </View>
-        <View style={styles.fila}>
-          <Text style={styles.celda1}>Grupo:</Text>
-          <Text style={styles.celda2}>{userData.grupo}</Text>
-        </View>
+      <View style={styles.fila}>
+      <LinearGradient
+          colors={['#64E9FF', '#f1f1f1']}
+          start={{ x: -1, y: 2 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.celda1}
+        >
+          <Text >No Control:</Text>
+        </LinearGradient>
         
-        <View style={styles.fila}>
-          <Text style={styles.celda1}>correo:</Text>
-          <Text style={styles.celda2}>{userData.gmail}</Text>
-        </View>
-        
+        <LinearGradient
+          colors={['#64E9FF', '#f1f1f1']}
+          start={{ x: 2, y: 1 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.celda2}
+        >
+          <Text>{userData.ncontrol}</Text>
+        </LinearGradient>
       </View>
+      
+      <View style={styles.fila}>
+      <LinearGradient
+          colors={['#64E9FF', '#f1f1f1']}
+          start={{ x: -1, y: 2 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.celda1}
+        >
+        <Text>Nombre:</Text>
+        </LinearGradient>
+        <LinearGradient
+          colors={['#64E9FF', '#f1f1f1']}
+          start={{ x: 2, y: 1 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.celda2}
+        >
+          <Text>{userData.usuarioLogueado}</Text>
+        </LinearGradient>
+      </View>
+      <View style={styles.fila}>
+      <LinearGradient
+          colors={['#64E9FF', '#f1f1f1']}
+          start={{ x: -1, y: 2 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.celda1}
+        >
+        <Text style>Grupo:</Text>
+        </LinearGradient>
+        <LinearGradient
+          colors={['#64E9FF', '#f1f1f1']}
+          start={{ x: 2, y: 1 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.celda2}
+        >
+          <Text>{userData.grupo}</Text>
+        </LinearGradient>
+      </View>
+      <View style={styles.fila}>
+      <LinearGradient
+          colors={['#64E9FF', '#f1f1f1']}
+          start={{ x: -1, y: 2 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.celda1}
+        >
+        <Text>correo:</Text>
+        </LinearGradient>
+        <LinearGradient
+          colors={['#64E9FF', '#f1f1f1']}
+          start={{ x: 2, y: 1 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.celda2}
+        >
+          <Text>{userData.gmail}</Text>
+        </LinearGradient>
+      </View>
+    </View>
 
       <TouchableOpacity style={styles.contenedor} onPress={logOut} >
         <LinearGradient
@@ -261,7 +317,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 1,
     borderColor: 'black',
-    backgroundColor: 'lightgreen',
+    backgroundColor: '#ff00a7',
     width: 200
   },
   avatar:{

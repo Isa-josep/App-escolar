@@ -13,37 +13,40 @@ const Home=()=>{
     <View style={styles.container}>
       <Image style={styles.logo} source={require('../src/tec-logo.png')}
       />
-      <Text style={styles.titulo}>Inicio</Text>
+      <Text style={styles.titulo}>Noticias</Text>
       <View style={styles.ntc}>
-      <Text style={styles.cartxt}>{`El cecytem Agradece el 
-compromiso de los alumnos 
-Cesar Vazques Torres Y
-Eleasar. "Grandes" `} </Text>
-      <Image source={require('../src/ajedrez.jpg')} style={styles.ico} />
+      <Text style={styles.cartxt}>{`#TecNMInforma e invita a la 
+comunidad Tecnológica y 
+sociedad en general al Concurso 
+de "Incremento de productividad 
+`} </Text>
+      <Image source={require('../src/TEC1.jpg')} style={styles.ico} />
       </View>
       
       <View style={styles.ntc2}>
-      <Text style={styles.cartxt}>{`Felicitamos a nuestros Alumnos 
-Alexis Torres Torres Y Brayan
-ortega Renteria Por su Entrega
-y perseverancia.`} </Text>
-      <Image source={require('../src/omi2.jpg')} style={styles.ico} />
+      <Text style={styles.cartxt}>{`#TecNMInforma Para alumnos 
+y docentes del instituto:
+¡Sé parte del programa 
+“*Bécalos English Challenge 
+2023-2024*”`} </Text>
+      <Image source={require('../src/TEC2.jpg')} style={styles.ico} />
       </View>
       <View style={styles.ntc3}>
-      <Text style={styles.cartxt}>{`Rumbo a la omi, Nuestros 
-alumnos estan en preparacion 
-para la olimpiada mexicana de
-informatica.`} </Text>
-      <Image source={require('../src/omi3.jpg')} style={styles.ico} />
+      <Text style={styles.cartxt}>{`#OrgulloTecNM
+"César Leonardo Maciel Ordaz 
+del Tec de Uruapan: favorito 
+para ganar el Campeonato 
+Nacional Deportivo del TecNM"`} </Text>
+      <Image source={require('../src/TEC3.jpg')} style={styles.ico} />
       </View>
 
       <View style={styles.ntc4}>
-      <Text style={styles.cartxt}>{`Felicitamos a nuestros 
-estudiantes,Brayam Ortega 
-Alexis Torres Torres; 
-su entrenador, Isauro Paredes; 
-y su Asesora, la Mtra. Carmelina`} </Text>
-      <Image source={require('../src/omi4.jpg')} style={styles.ico} />
+      <Text style={styles.cartxt}>{`"Ingeniería Industrial del Tec 
+de Uruapan  participa en el 18 
+Congreso de Ciencia, Tecnología 
+e Innovación del Estado de 
+Michoacán" `} </Text>
+      <Image source={require('../src/TEC4.jpg')} style={styles.ico} />
       </View>
 
       <StatusBar style="auto" />

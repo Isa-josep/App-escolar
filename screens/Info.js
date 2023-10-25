@@ -1,137 +1,268 @@
-import React from 'react';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
-const coloresMaterias = {
-  'Administración': '#ff00a7',
-  'Programación': '#00ff00',
-  'Ética': '#0099ff',
-  'Mts Discretas': '#ff9900',
-  'Cálculo': '#9900ff',
-  'Investigación': '#64E9FF',
-  'Tutorias': 'red',
-};
-const HorarioClases = () => {
-  const horas = [
-    '1:00 PM \nA \n2:00 PM',
-    '2:00 PM \nA \n3:00 PM',
-    '3:00 PM \nA \n4:00 PM',
-    '4:00 PM \nA \n5:00 PM',
-    '5:00 PM \nA \n6:00 PM',
-    '6:00 PM \nA \n7:00 PM',
-  ];
-
-  const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
-
-  const clases = [
-    { dia: 'Lunes', materia: 'Administración', horaInicio: '1:00 PM \nA \n2:00 PM', horaFin: '2:00 PM' },
-    { dia: 'Lunes', materia: 'Administración', horaInicio: '2:00 PM \nA \n3:00 PM', horaFin: '3:00 PM' },
-    { dia: 'Lunes', materia: 'Programación', horaInicio: '3:00 PM \nA \n4:00 PM', horaFin: '4:00 PM' },
-    { dia: 'Lunes', materia: 'Programación', horaInicio: '4:00 PM \nA \n5:00 PM', horaFin: '5:00 PM' },
-    { dia: 'Lunes', materia: 'Ética', horaInicio: '5:00 PM \nA \n6:00 PM', horaFin: '6:00 PM' },
-    { dia: 'Lunes', materia: 'Ética', horaInicio: '6:00 PM \nA \n7:00 PM', horaFin: '7:00 PM' },
-    
-    { dia: 'Martes', materia: 'Mts Discretas', horaInicio: '1:00 PM \nA \n2:00 PM', horaFin: '2:00 PM' },
-    { dia: 'Martes', materia: 'Mts Discretas', horaInicio: '2:00 PM \nA \n3:00 PM', horaFin: '3:00 PM' },
-    { dia: 'Martes', materia: 'Cálculo', horaInicio: '3:00 PM \nA \n4:00 PM', horaFin: '4:00 PM' },
-    { dia: 'Martes', materia: 'Administración', horaInicio: '4:00 PM \nA \n5:00 PM', horaFin: '5:00 PM' },
-    { dia: 'Martes', materia: 'Administración', horaInicio: '5:00 PM \nA \n6:00 PM', horaFin: '6:00 PM' },
-
-    { dia: 'Miércoles', materia: 'Tutorias', horaInicio: '1:00 PM \nA \n2:00 PM', horaFin: '2:00 PM' },
-    { dia: 'Miércoles', materia: 'Programación', horaInicio: '2:00 PM \nA \n3:00 PM', horaFin: '3:00 PM' },
-    { dia: 'Miércoles', materia: 'Programación', horaInicio: '3:00 PM \nA \n4:00 PM', horaFin: '4:00 PM' },
-    { dia: 'Miércoles', materia: 'Programación', horaInicio: '4:00 PM \nA \n5:00 PM', horaFin: '5:00 PM' },
-    { dia: 'Miércoles', materia: 'Ética', horaInicio: '5:00 PM \nA \n6:00 PM', horaFin: '6:00 PM' },
-    { dia: 'Miércoles', materia: 'Ética', horaInicio: '6:00 PM \nA \n7:00 PM', horaFin: '7:00 PM' },
-
-    { dia: 'Jueves', materia: 'Mts Discretas', horaInicio: '1:00 PM \nA \n2:00 PM', horaFin: '3:00 PM' },
-    { dia: 'Jueves', materia: 'Mts Discretas', horaInicio: '2:00 PM \nA \n3:00 PM', horaFin: '3:00 PM' },
-    { dia: 'Jueves', materia: 'Investigación', horaInicio: '3:00 PM \nA \n4:00 PM', horaFin: '4:00 PM' },
-    { dia: 'Jueves', materia: 'Investigación', horaInicio: '4:00 PM \nA \n5:00 PM', horaFin: '5:00 PM' },
-    { dia: 'Jueves', materia: 'Cálculo', horaInicio: '5:00 PM \nA \n6:00 PM', horaFin: '6:00 PM' },
-    { dia: 'Jueves', materia: 'Cálculo', horaInicio: '6:00 PM \nA \n7:00 PM', horaFin: '7:00 PM' },
-
-    { dia: 'Viernes', materia: 'Mts Discretas', horaInicio: '1:00 PM \nA \n2:00 PM', horaFin: '2:00 PM' },
-    { dia: 'Viernes', materia: 'Investigación', horaInicio: '2:00 PM \nA \n3:00 PM', horaFin: '3:00 PM' },
-    { dia: 'Viernes', materia: 'Investigación', horaInicio: '3:00 PM \nA \n4:00 PM', horaFin: '4:00 PM' },
-    
-  ];
-
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Keyboard, FlatList, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useState } from 'react';
+import { userData } from './Login';
+//import { mod1, mod2, probabilidad, filosofia, propedeutica1, propedeutica2, prom, setHide } from './Login';
+const Info = () => {
   return (
-    <ScrollView horizontal contentContainerStyle={styles.container}>
-      <View style={styles.hourColumn}>
-        {horas.map((hora, i) => (
-          <View key={i} style={styles.horaCell}>
-            <Text style={styles.horaText}>{hora}</Text>
-          </View>
-        ))}
-      </View>
-      {diasSemana.map((dia, index) => (
-        <View key={index} style={styles.dayColumn}>
-          <Text style={styles.dayText}>{dia}</Text>
-          {horas.map((hora, i) => (
-            <View key={i} style={styles.horaCell}>
-              {clases
-                .filter((clase) => clase.dia === dia && clase.horaInicio === hora)
-                .map((clase, j) => (
-                  <View key={j} style={[styles.celda, { backgroundColor: coloresMaterias[clase.materia] }]}>
-                    <Text style={styles.materiaText}>{clase.materia}</Text>
-                  </View>
-                ))
-              }
-            </View>
-          ))}
-        </View>
-      ))}
-    </ScrollView>
-  );
-};
+    <View style={styles.container}>
+      <Image style={styles.logo} source={require('../src/tec-logo.png')}
+      />
+      <Text style={styles.titulo}>Mis Calificaciones</Text>
+      <View style={styles.tabla}>
+        <View style={styles.fila}>
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: -1, y: 2 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.celda1}
+          >
+            <Text >Mat aplicadas:</Text>
+          </LinearGradient>
 
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: 2, y: 1 }}
+            end={{ x: 0, y: 1 }}
+            style={styles.celda2}
+          >
+            <Text>{userData.matAplicada}</Text>
+          </LinearGradient>
+
+
+        </View>
+        <View style={styles.fila}>
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: -1, y: 2 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.celda1}
+          >
+            <Text >Calculo:</Text>
+          </LinearGradient>
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: 2, y: 1 }}
+            end={{ x: 0, y: 1 }}
+            style={styles.celda2}
+          >
+            <Text>{userData.mod2}</Text>
+          </LinearGradient>
+        </View>
+        <View style={styles.fila}>
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: -1, y: 2 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.celda1}
+          >
+            <Text >Programacion</Text>
+          </LinearGradient>
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: 2, y: 1 }}
+            end={{ x: 0, y: 1 }}
+            style={styles.celda2}
+          >
+            <Text>{userData.probabilidad}</Text>
+          </LinearGradient>
+        </View>
+        <View style={styles.fila}>
+
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: -1, y: 2 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.celda1}
+          >
+            <Text >Investigacion:</Text>
+          </LinearGradient>
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: 2, y: 1 }}
+            end={{ x: 0, y: 1 }}
+            style={styles.celda2}
+          >
+            <Text>{userData.filosofia}</Text>
+          </LinearGradient>
+
+        </View>
+        <View style={styles.fila}>
+
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: -1, y: 2 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.celda1}
+          >
+            <Text >Administracion</Text>
+          </LinearGradient>
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: 2, y: 1 }}
+            end={{ x: 0, y: 1 }}
+            style={styles.celda2}
+          >
+            <Text>{userData.propedeutica1}</Text>
+          </LinearGradient>
+        </View>
+
+        <View style={styles.fila}>
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: -1, y: 2 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.celda1}
+          >
+            <Text >promedio:</Text>
+          </LinearGradient>
+
+          <LinearGradient
+            colors={['#E116F9', '#f1f1f1']}
+            start={{ x: 2, y: 1 }}
+            end={{ x: 0, y: 1 }}
+            style={styles.celda2}
+          >
+            <Text>{userData.prom}</Text>
+          </LinearGradient>
+        </View>
+      </View>
+
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+export default Info;
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    marginVertical: 70,
-  },
-  celda: {
-    marginVertical:-10,
-    padding: 5,
-    alignItems: 'center',
-    height:79,
-    width:85,
-  },
-  materiaText: {
+  titulo: {
+    justifyContent: 'center',
     textAlign: 'center',
-  },
-  hourColumn: {
-    width: 85,
-    height:476,
-    marginVertical:24,
-    flexDirection: 'column',
-    borderWidth: 1,
-    borderRightWidth: 1, 
-    // backgroundColor: '#ff00a7', 
-  },
-  dayColumn: {
-    width: 85,
-    height: 500,
-    borderWidth: 1,
-  },
-  dayText: {
-    fontSize: 16,
+    fontSize: 25,
+    color: '#000000',
     fontWeight: 'bold',
-    textAlign: 'center',
+    padding: 30,
   },
-  horaCell: {
-    width: 85,
-    borderWidth: 1,
-    borderBottomWidth: 0,
-    borderRightWidth: 0,
+  texto: {
+    fontSize: 18,
+    color: '#000000',
+    fontWeight: 'bold',
     padding: 10,
-    height:79,
-    alignItems: 'center',
-  },
-  horaText: {
-    fontSize: 12,
+    justifyContent: 'center',
     textAlign: 'center',
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
+  container: {
+    backgroundColor: '#f1f1f1',
+    alignItems: 'center',
+    marginTop: 30,
+  },
+  input: {
+    padding: 10,
+    paddingStart: 30,
+    width: '80%',
+    height: 50,
+    marginTop: 20,
+    margin: 1,
+    borderRadius: 30,
+    backgroundColor: '#fff',
+  },
+  button: {
+    width: '80%',
+    height: 50,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 5,
+  },
+  contenedor: {
+    width: 200,
+    alignItems: 'center',
+    marginTop: 25,
+  },
+  modal: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  modalTxt: {
+    textAlign: 'center',
+    fontSize: 20,
+    color: '#000000',
+    fontWeight: 'bold',
+    padding: 10,
+  },
+  ico: {
+    height: 40,
+    width: 40,
+    borderColor: '#ddd',
+  },
+  content_ico: {
+    marginTop: 20,
+    alignItems: 'flex-end',
+    marginRight: 20,
+  },
+  card: {
+    backgroundColor: '#f1f1f1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 170,
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingStart: 5,
+    paddingEnd: 5,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 15,
+  },
+  menu: {
+    height: 50,
+    width: 230,
+  },
+  text: {
+    height: 20,
+    fontWeight: 'bold',
+  },
+  tabla: {
+    borderWidth: 1,
+    borderColor: 'black',
+    margin: 35,
+  },
+  fila: {
+    flexDirection: 'row',
+  },
+  celda1: {
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    width: 125
+  },
+  celda2: {
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    backgroundColor: 'lightgreen',
+    width: 200
+  },
+  logo: {
+    margin: 5,
+    width: 355,
+    height: 110,
+    left: 40,
+    top: -5,
+    marginRight: 90,
   },
 });
-
-export default HorarioClases;

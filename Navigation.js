@@ -9,7 +9,9 @@ import Info from "./screens/Info";
 import Usuarios from "./screens/Usuarios";
 import { FontAwesome } from '@expo/vector-icons';
 import Login from "./screens/Login";
+import Tmp from "./screens/tmp";
 import { GlobalStateContext } from "./screens/funtionMod";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 const ScreenPatallas=createNativeStackNavigator();
 
 function Myscreens(){
@@ -45,6 +47,7 @@ function Mytabs(){
                 tabBarIcon:({ color,size })=>(
                 <Ionicons name="ios-home-sharp" size={size} color={color} />
                 ),
+                tabBarBadge:" ",
                 headerShown:false //oculta el ttulo
                 }}/>
                 
@@ -59,11 +62,22 @@ function Mytabs(){
                 <Tab.Screen name="Info" component={Info} options={{
                 tabBarLabel:'Info',
                 tabBarIcon:({ color,size })=>(
-                    <Ionicons name="ios-information-circle-outline" size={size} color={color} />
+                    <MaterialCommunityIcons name="note-edit" size={24} color={color} />
+                    
                     ),
-                    tabBarBadge:10,
+                    
                     headerShown:false
             }} />
+
+                <Tab.Screen name="Tmp" component={Tmp} options={{
+                tabBarLabel:'Horario',
+                tabBarIcon:({ color,size })=>(
+                    <Ionicons name="ios-information-circle-outline" size={size} color={color} />
+                    ),
+                    
+                    
+                    headerShown:false
+            }}/>
         </Tab.Navigator>
     );
 }

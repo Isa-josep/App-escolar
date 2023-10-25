@@ -1,71 +1,100 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, StyleSheet } from 'react-native';
 
-const daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
-const timeSlots = Array.from({ length: 7 }, (_, i) => i + 13); // Horas de 13:00 a 19:00 (1 PM a 7 PM)
+const HorarioClases = () => {
+  const horas = [
+    { horaInicio: '1:00 PM', horaFin: '2:00 PM' },
+    { horaInicio: '2:00 PM', horaFin: '3:00 PM' },
+    { horaInicio: '3:00 PM', horaFin: '4:00 PM' },
+    { horaInicio: '4:00 PM', horaFin: '5:00 PM' },
+    { horaInicio: '5:00 PM', horaFin: '6:00 PM' },
+    { horaInicio: '6:00 PM', horaFin: '7:00 PM' },
+  ];
 
-const ScheduleScreen = () => {
+  const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+
+  const clases = [
+    { dia: 'Lunes', materia: 'Administración', horaInicio: '1:00 PM', horaFin: '2:00 PM' },
+    { dia: 'Lunes', materia: 'Administración', horaInicio: '2:00 PM', horaFin: '3:00 PM' },
+    { dia: 'Lunes', materia: 'Programación', horaInicio: '3:00 PM', horaFin: '4:00 PM' },
+    { dia: 'Lunes', materia: 'Programación', horaInicio: '4:00 PM', horaFin: '5:00 PM' },
+    { dia: 'Lunes', materia: 'Ética', horaInicio: '5:00 PM', horaFin: '6:00 PM' },
+    { dia: 'Lunes', materia: 'Ética', horaInicio: '6:00 PM', horaFin: '7:00 PM' },
+    // Puedes agregar más clases para otros días aquí
+  ];
+
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.dayHeader}></Text>
-        {daysOfWeek.map((day, index) => (
-          <Text key={index} style={styles.dayHeader}>
-            {day}
-          </Text>
+    <ScrollView horizontal contentContainerStyle={styles.container}>
+      <View style={styles.hourColumn}>
+        <Text style={styles.headerText}>Hora</Text>
+        {horas.map((hora, i) => (
+          <View key={i} style={styles.horaCell}>
+            <Text style={styles.horaText}>
+              {hora.horaInicio} - {hora.horaFin}
+            </Text>
+          </View>
         ))}
       </View>
-      {timeSlots.map((time, timeIndex) => (
-        <View key={timeIndex} style={styles.timeSlot}>
-          <Text style={styles.timeText}>{time}:00</Text>
-          {daysOfWeek.map((day, dayIndex) => (
-            <View key={dayIndex} style={styles.class}>
-              <Text style={styles.classText}>Clase aquí</Text>
+      {diasSemana.map((dia, index) => (
+        <View key={index} style={styles.dayColumn}>
+          <Text style={styles.dayText}>{dia}</Text>
+          {horas.map((hora, i) => (
+            <View key={i} style={styles.horaCell}>
+              {clases
+                .filter((clase) => clase.dia === dia && clase.horaInicio === hora.horaInicio)
+                .map((clase, j) => (
+                  <Text key={j}>
+                    {clase.materia} 
+                  </Text>
+                ))
+              }
             </View>
           ))}
         </View>
       ))}
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#f0f0f0',
-  },
-  header: {
     flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: 'black',
-    padding: 5,
+    marginVertical: 70,
   },
-  dayHeader: {
-    flex: 1,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  timeSlot: {
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: 'black',
-  },
-  timeText: {
-    width: 60,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  class: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  hourColumn: {
+    width: 120, // Aumenta el ancho para acomodar las horas
+    flexDirection: 'column',
     borderWidth: 1,
-    borderColor: 'black',
+    borderRightWidth: 2, // Añadido para separar la columna de horas
+    backgroundColor: '#f0f0f0', // Estilo de fondo para la columna de horas
   },
-  classText: {
+  dayColumn: {
+    width: 85,
+    height: 500,
+    borderWidth: 1,
+  },
+  dayText: {
+    fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  horaCell: {
+    width: 85,
+    borderWidth: 1,
+    borderBottomWidth: 0,
+    borderRightWidth: 0,
+    padding: 10,
+    alignItems: 'center',
+  },
+  headerText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  horaText: {
+    fontSize: 12,
+    textAlign: 'center',
   },
 });
 
-export default ScheduleScreen;
+export default HorarioClases;
